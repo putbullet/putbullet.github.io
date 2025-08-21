@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="keywords" content="SOULAIMANE, SOULAIMANE ETTABAA, ettabaa, soulaimaneett, soulaiman ettabaa, soulaiman etabaa, ETABAA, soulaiman tabaa, ETTABAA, tabaa, putbullet, PUTBULLET, pbt, Cybersecurity, MARRAKECH, ettabaa soulaimane, ettabaasoulaimane, soulaimaneettabaa, soulaimanettabaaHTML, CSS, JavaScript, Applied Mathematics, Computer Science">
+    <meta name="description" content="Portfolio of Soulaimane ETTABAA (putbullet) - Software, Data, and Security Enthusiast with Applied Mathematics background">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soulaimane ETTABAA - putbullet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: white;
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        #hilbert-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 2px solid #333;
+        }
+
+        .nickname {
+            font-size: 2.5em;
+            font-weight: 900; /* Extra bold */
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+            letter-spacing: 1px; /* Add some letter spacing for emphasis */
+        }
+
+        .about-text {
+            max-width: 600px;
+            text-align: center;
+            line-height: 1.6;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .social-icon {
+            width: 30px;
+            height: 30px;
+            fill: #333;
+            transition: fill 0.3s ease;
+            cursor: pointer;
+        }
+
+        .social-icon:hover {
+            fill: #666;
+        }
+
+        .email-popup {
+            position: relative;
+            display: inline-block;
+        }
+
+        .email-button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: background 0.3s ease;
+        }
+
+        .email-button:hover {
+            background: #555;
+        }
+
+        .email-tooltip {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            border-radius: 3px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            font-size: 0.8em;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .email-tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+
+        .email-popup:hover .email-tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .nickname {
+                font-size: 2em;
+            }
+            
+            .about-text {
+                font-size: 1em;
+                max-width: 90%;
+            }
+            
+            .social-icons {
+                gap: 15px;
+            }
+            
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="hilbert-canvas"></canvas>
+    
+    <div class="container">
+        <img src="images/meimage.jpeg" alt="Soulaimane ETTABAA" class="profile-image">
+        
+        <h1 class="nickname">putbullet</h1>
+        
+        <p class="about-text">
+            This is Soulaimane ETTABAA (putbullet), I'm a Software, Data, and Security Enthusiast with a Bachelor's degree in Applied Mathematics and Computer Science. I have built many software applications in different technologies, and I would also like to add that I'm a math geek, passionate about solving complex problems, exploring algorithms, and applying mathematical concepts in programming and cybersecurity.
+        </p>
+        
+        <div class="social-icons">
+            <!-- GitHub -->
+            <a href="https://github.com/putbullet" target="_blank" rel="noopener noreferrer">
+                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                    <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8z"/>
+                </svg>
+            </a>
+            
+            <!-- Twitter/X -->
+            <a href="https://twitter.com/soulaimaneett" target="_blank" rel="noopener noreferrer">
+                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
+                </svg>
+            </a>
+            
+            <!-- Instagram -->
+            <a href="https://instagram.com/soulaimaneett" target="_blank" rel="noopener noreferrer">
+                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                </svg>
+            </a>
+            
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/soulaimane-ettabaa" target="_blank" rel="noopener noreferrer">
+                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/>
+                </svg>
+            </a>
+            
+            <!-- Medium -->
+            <a href="https://medium.com/@soulaimaneett" target="_blank" rel="noopener noreferrer">
+                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1043.63 592.71">
+                    <path d="M588.67 296.35c0 163.65-131.85 296.36-294.33 296.36C131.85 592.71 0 460 0 296.35S131.85 0 294.34 0c162.48 0 294.33 132.7 294.33 296.35Zm259.34 0c0 154.37-58.98 279.57-131.73 279.57S584.54 450.72 584.54 296.35 643.52 16.78 716.28 16.78c72.75 0 131.73 125.2 131.73 279.57Zm195.62 0c0 142.44-21.88 258.02-48.87 258.02s-48.87-115.58-48.87-258.02 21.88-258.02 48.87-258.02 48.87 115.58 48.87 258.02Z"/>
+                </svg>
+            </a>
+        </div>
+        
+        <div class="email-popup">
+            <button class="email-button" onclick="window.location.href='mailto:darealputbullet@proton.me'">
+                Contact Me
+            </button>
+            <span class="email-tooltip">darealputbullet@proton.me</span>
+        </div>
+    </div>
+
+    <script>
+        // Hilbert Curve Implementation
+        class HilbertCurve {
+            constructor(canvas) {
+                this.canvas = canvas;
+                this.ctx = canvas.getContext('2d');
+                this.order = 4;
+                this.animationProgress = 0;
+                this.animationSpeed = 0.00005; // much slower animation
+                this.curves = [];
+                this.currentCurveIndex = 0;
+                
+                this.resizeCanvas();
+                this.generateMultipleCurves();
+                this.animate();
+                
+                window.addEventListener('resize', () => this.resizeCanvas());
+            }
+            
+            resizeCanvas() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+                if (this.curves) {
+                    this.generateMultipleCurves();
+                }
+            }
+            
+            generateMultipleCurves() {
+                this.curves = [];
+                const numberOfCurves = 6;
+                
+                for (let i = 0; i < numberOfCurves; i++) {
+                    const minSize = Math.min(this.canvas.width, this.canvas.height);
+                    const size = minSize * (0.6 + (i % 3) * 0.3); // much bigger curves
+                    
+                    // Ensure curves cover the entire canvas width including far right
+                    const maxX = this.canvas.width + size * 0.5; // extend well beyond right edge
+                    const maxY = this.canvas.height + size * 0.5; // extend beyond bottom edge
+                    
+                    const x = (Math.random() * maxX) - size * 0.3; // allow more negative positioning
+                    const y = (Math.random() * maxY) - size * 0.3;
+                    
+                    this.curves.push({
+                        points: this.generateHilbert(this.order, size),
+                        x: x,
+                        y: y,
+                        opacity: 0.08 + (i * 0.03), // slightly reduced opacity for bigger curves
+                        rotation: i * Math.PI / 6,
+                        rotationSpeed: 0.00003 + (i * 0.00001)
+                    });
+                }
+                
+                // Add multiple curves specifically for right side coverage
+                const rightSideSize = Math.min(this.canvas.width, this.canvas.height) * 0.8;
+                
+                // Right side curve 1 - top right
+                this.curves.push({
+                    points: this.generateHilbert(this.order, rightSideSize),
+                    x: this.canvas.width * 0.6, // position more to the right
+                    y: this.canvas.height * 0.05,
+                    opacity: 0.06,
+                    rotation: Math.PI / 4,
+                    rotationSpeed: 0.00002
+                });
+                
+                // Right side curve 2 - middle right
+                this.curves.push({
+                    points: this.generateHilbert(this.order, rightSideSize * 1.1),
+                    x: this.canvas.width * 0.7,
+                    y: this.canvas.height * 0.3,
+                    opacity: 0.05,
+                    rotation: -Math.PI / 6,
+                    rotationSpeed: 0.000015
+                });
+                
+                // Far right edge curve - very right
+                this.curves.push({
+                    points: this.generateHilbert(this.order, rightSideSize * 0.9),
+                    x: this.canvas.width * 0.85, // very far right
+                    y: this.canvas.height * 0.15,
+                    opacity: 0.07,
+                    rotation: Math.PI / 3,
+                    rotationSpeed: 0.000025
+                });
+                
+                // Right bottom curve
+                this.curves.push({
+                    points: this.generateHilbert(this.order, rightSideSize * 0.8),
+                    x: this.canvas.width * 0.75,
+                    y: this.canvas.height * 0.6,
+                    opacity: 0.06,
+                    rotation: -Math.PI / 4,
+                    rotationSpeed: 0.00003
+                });
+                
+                // Additional right edge coverage
+                this.curves.push({
+                    points: this.generateHilbert(this.order, rightSideSize * 1.3),
+                    x: this.canvas.width * 0.5,
+                    y: this.canvas.height * 0.45,
+                    opacity: 0.04,
+                    rotation: Math.PI / 5,
+                    rotationSpeed: 0.000018
+                });
+                
+                // Add equivalent left side curves for balance
+                const leftSideSize = Math.min(this.canvas.width, this.canvas.height) * 0.8;
+                
+                // Left side curve 1 - top left
+                this.curves.push({
+                    points: this.generateHilbert(this.order, leftSideSize),
+                    x: this.canvas.width * 0.15, // position on the left
+                    y: this.canvas.height * 0.05,
+                    opacity: 0.06,
+                    rotation: -Math.PI / 4,
+                    rotationSpeed: 0.000022
+                });
+                
+                // Left side curve 2 - middle left
+                this.curves.push({
+                    points: this.generateHilbert(this.order, leftSideSize * 1.1),
+                    x: this.canvas.width * 0.05,
+                    y: this.canvas.height * 0.3,
+                    opacity: 0.05,
+                    rotation: Math.PI / 6,
+                    rotationSpeed: 0.000017
+                });
+                
+                // Far left edge curve - very left
+                this.curves.push({
+                    points: this.generateHilbert(this.order, leftSideSize * 0.9),
+                    x: -this.canvas.width * 0.1, // extend beyond left edge
+                    y: this.canvas.height * 0.15,
+                    opacity: 0.07,
+                    rotation: -Math.PI / 3,
+                    rotationSpeed: 0.000027
+                });
+                
+                // Left bottom curve
+                this.curves.push({
+                    points: this.generateHilbert(this.order, leftSideSize * 0.8),
+                    x: this.canvas.width * 0.1,
+                    y: this.canvas.height * 0.6,
+                    opacity: 0.06,
+                    rotation: Math.PI / 4,
+                    rotationSpeed: 0.000032
+                });
+                
+                // Additional left edge coverage
+                this.curves.push({
+                    points: this.generateHilbert(this.order, leftSideSize * 1.2),
+                    x: this.canvas.width * 0.25,
+                    y: this.canvas.height * 0.45,
+                    opacity: 0.04,
+                    rotation: -Math.PI / 5,
+                    rotationSpeed: 0.000020
+                });
+            }
+            
+            generateHilbert(order, size) {
+                const points = [];
+                const total = Math.pow(4, order);
+                
+                for (let i = 0; i < total; i++) {
+                    const point = this.hilbertIndex(i, order);
+                    points.push({
+                        x: (point.x / Math.pow(2, order)) * size,
+                        y: (point.y / Math.pow(2, order)) * size
+                    });
+                }
+                
+                return points;
+            }
+            
+            hilbertIndex(index, order) {
+                const points = [{ x: 0, y: 0 }];
+                
+                for (let i = 1; i < Math.pow(4, order); i++) {
+                    points.push(this.getHilbertPoint(i, order));
+                }
+                
+                return points[index] || { x: 0, y: 0 };
+            }
+            
+            getHilbertPoint(index, order) {
+                let x = 0, y = 0;
+                let t = index;
+                
+                for (let i = 0; i < order; i++) {
+                    const rx = 1 & (t / 2);
+                    const ry = 1 & (t ^ rx);
+                    
+                    if (ry === 0) {
+                        if (rx === 1) {
+                            x = (1 << i) - 1 - x;
+                            y = (1 << i) - 1 - y;
+                        }
+                        [x, y] = [y, x];
+                    }
+                    
+                    x += rx << i;
+                    y += ry << i;
+                    t = Math.floor(t / 4);
+                }
+                
+                return { x, y };
+            }
+            
+            animate() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                this.curves.forEach((curve, curveIndex) => {
+                    this.ctx.save();
+                    this.ctx.translate(curve.x + curve.points[0]?.x || 0, curve.y + curve.points[0]?.y || 0);
+                    this.ctx.rotate(curve.rotation + this.animationProgress * curve.rotationSpeed * 1000);
+                    
+                    this.ctx.strokeStyle = `rgba(0, 0, 0, ${curve.opacity})`;
+                    this.ctx.lineWidth = 2; // increased line width for bigger curves
+                    this.ctx.lineCap = 'round';
+                    this.ctx.lineJoin = 'round';
+                    
+                    this.ctx.beginPath();
+                    
+                    const totalAnimationCycles = 100; // much slower drawing cycles
+                    const visiblePoints = Math.floor((this.animationProgress * totalAnimationCycles + curveIndex * 0.5) * curve.points.length) % curve.points.length;
+                    
+                    for (let i = 0; i <= visiblePoints; i++) {
+                        const point = curve.points[i];
+                        if (point) {
+                            if (i === 0) {
+                                this.ctx.moveTo(point.x, point.y);
+                            } else {
+                                this.ctx.lineTo(point.x, point.y);
+                            }
+                        }
+                    }
+                    
+                    this.ctx.stroke();
+                    this.ctx.restore();
+                });
+                
+                this.animationProgress += this.animationSpeed;
+                if (this.animationProgress > 1) {
+                    this.animationProgress = 0;
+                }
+                
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('hilbert-canvas');
+            new HilbertCurve(canvas);
+        });
+    </script>
+</body>
+</html>
